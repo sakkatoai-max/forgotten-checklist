@@ -26,11 +26,12 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <main>{children}</main>
-        <nav>
-          <Link href="/">チェック</Link>
-          <Link href="/edit">へんしゅう</Link>
-          <Link href="/settings">せってい</Link>
+        <main className="appMain">{children}</main>
+
+        <nav className="bottomNav" aria-label="メインメニュー">
+          <Link className="bottomNavLink" href="/">チェック</Link>
+          <Link className="bottomNavLink" href="/edit">へんしゅう</Link>
+          <Link className="bottomNavLink" href="/settings">せってい</Link>
         </nav>
       </body>
     </html>

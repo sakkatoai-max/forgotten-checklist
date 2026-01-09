@@ -8,6 +8,10 @@
   --success: #4ae288;
   --gray: #e0e0e0;
   --text-gray: #666;
+  /* バー本体の高さ（中身のタップ領域） */
+  --bottom-nav-height: 64px;
+  /* 画面端から少し浮かせる余白 */
+  --bottom-nav-gap: 10px;
 }
 
 * {
@@ -37,7 +41,11 @@ main {
   max-width: 600px;
   margin: 0 auto;
   width: 100%;
-  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+}
+
+.appMain {
+  /* バーが浮く分も含めて、本文が隠れないようにする */
+  padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom) + (var(--bottom-nav-gap) * 2));
 }
 
 h1 {
@@ -143,29 +151,52 @@ input[type="text"]:focus {
 }
 
 /* Nav */
-nav {
-  display: flex;
-  justify-content: space-around;
-  padding: 16px;
-  padding-bottom: calc(16px + env(safe-area-inset-bottom));
-  border-top: 1px solid var(--gray);
-  background: white;
+.bottomNav {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+  left: var(--bottom-nav-gap);
+  right: var(--bottom-nav-gap);
+  bottom: calc(env(safe-area-inset-bottom) + var(--bottom-nav-gap));
+
+  height: var(--bottom-nav-height);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: saturate(180%) blur(16px);
+
+  padding: 6px;
+  z-index: 1000;
 }
 
-nav a {
+.bottomNavLink {
+  flex: 1;
+
+  /* “文字だけ”じゃなく、枠全体を押せるようにする */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  border-radius: 14px;
+
+  font-size: 18px;
+  font-weight: 800;
   text-decoration: none;
-  color: var(--text-gray);
-  font-weight: bold;
-  padding: 8px 16px;
-  text-align: center;
-  font-size: 0.9rem;
+  color: #333;
+
+  /* タップ領域の保険 */
+  min-height: 44px;
 }
 
-nav a.active {
+.bottomNavLink:active,
+.bottomNavLink:focus {
+  background-color: var(--primary-light);
   color: var(--primary);
 }

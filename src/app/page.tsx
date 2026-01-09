@@ -138,10 +138,7 @@ export default function Home() {
         </section>
       )}
 
-      <div className="text-center" style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-        <Link href="/edit" className="muted" style={{ textDecoration: 'underline' }}>項目をへんしゅう</Link>
-        <Link href="/settings" className="muted" style={{ textDecoration: 'underline' }}>設定</Link>
-      </div>
+
 
     </div>
   );
