@@ -5,6 +5,11 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: '忘れ物チェック',
   description: '毎日の持ち物チェックアプリ',
+  manifest: '/manifest.webmanifest',
+  icons: {
+    apple: '/apple-touch-icon.png',
+  },
+  themeColor: '#4a90e2',
 };
 
 export const viewport = {
